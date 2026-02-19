@@ -6,6 +6,27 @@ language and the Arcade library.
 # Import the "arcade" library
 import arcade
 
+def dibujar_tractor(x : int, y : int, escala: int):
+    # Draw the engine
+    ## TOMAMOS DE REFERENCIA x = 600 , y = 120 que es el donde se encuntra el motor del tractor primero
+    arcade.draw_rect_filled(arcade.XYWH(x, y, 140 * escala, 70 * escala), arcade.color.GRAY)
+    arcade.draw_rect_filled(arcade.XYWH(x - (10 * escala), y - (15 * escala), 90 * escala, 40 * escala), arcade.color.BLACK)
+
+    # Draw the smoke stack
+    arcade.draw_rect_filled(arcade.XYWH(x - (20 * escala), y + 55 * escala, 10*escala, 40*escala), arcade.color.BLACK)
+
+    # Back wheel
+    arcade.draw_circle_filled(x- (110 * escala), y - (10 * escala), 50*escala, arcade.color.BLACK)
+    arcade.draw_circle_filled(x- (110 * escala), y - (10 * escala), 45*escala, arcade.color.BLACK_OLIVE)
+    arcade.draw_circle_filled(x- (110 * escala), y - (10 * escala), 35*escala, arcade.color.OLD_LACE)
+    arcade.draw_circle_filled(x- (110 * escala), y - (10 * escala), 10*escala, arcade.color.RED)
+
+    # Front wheel
+    arcade.draw_circle_filled(x + (50 * escala), (y - 30 * escala), 30*escala, arcade.color.BLACK)
+    arcade.draw_circle_filled(x + (50 * escala),(y - 30 * escala), 25*escala, arcade.color.BLACK_OLIVE)
+    arcade.draw_circle_filled(x + (50 * escala), (y - 30 * escala), 18*escala, arcade.color.OLD_LACE)
+    arcade.draw_circle_filled(x + (50 * escala), (y - 30 * escala), 5*escala, arcade.color.RED)
+
 # Open up a window.
 # From the "arcade" library, use a function called "open_window"
 # Set the window title to "Drawing Example"
@@ -65,26 +86,14 @@ arcade.draw_rect_filled(arcade.XYWH(250, 440, 20, 30), arcade.color.BLACK)
 arcade.draw_rect_outline(arcade.XYWH(190, 310, 30, 60), arcade.color.BONE, 5)
 
 # --- Draw the tractor ---
-
-# Draw the engine
-arcade.draw_rect_filled(arcade.XYWH(600, 120, 140, 70), arcade.color.GRAY)
-arcade.draw_rect_filled(arcade.XYWH(590, 105, 90, 40), arcade.color.BLACK)
-
-# Draw the smoke stack
-arcade.draw_rect_filled(arcade.XYWH(580, 175, 10, 40), arcade.color.BLACK)
-
-# Back wheel
-arcade.draw_circle_filled(490, 110, 50, arcade.color.BLACK)
-arcade.draw_circle_filled(490, 110, 45, arcade.color.BLACK_OLIVE)
-arcade.draw_circle_filled(490, 110, 35, arcade.color.OLD_LACE)
-arcade.draw_circle_filled(490, 110, 10, arcade.color.RED)
-
-# Front wheel
-arcade.draw_circle_filled(650, 90, 30, arcade.color.BLACK)
-arcade.draw_circle_filled(650, 90, 25, arcade.color.BLACK_OLIVE)
-arcade.draw_circle_filled(650, 90, 18, arcade.color.OLD_LACE)
-arcade.draw_circle_filled(650, 90, 5, arcade.color.RED)
-
+x = 30
+y = 60
+for i in range(1,6): # Empezamos en 1 para que no haya escala 0
+    escala =  i / 5
+    dibujar_tractor(x, y, escala)
+    ancho_tractor_actual = 340 * escala
+    x += ancho_tractor_actual + 10
+   
 # --- Finish drawing ---
 
 # Keep the window up until someone closes it.
